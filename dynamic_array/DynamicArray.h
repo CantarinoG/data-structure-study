@@ -1,3 +1,4 @@
+// Code adapted from geeksforgeeks
 #ifndef DYNAMICARRAY_H
 #define DYNAMICARRAY_H
 
@@ -26,11 +27,13 @@ public:
 
     void shrinkArray(); // Substitute the current array for one of half the size
 
-    int search(int key); // Search for element in the array
+    int search(int key); // Search for element in the array. Returns -1 if not found
 
     void insertAt(int index, int value); // Insert element at given index
 
     void deleteAt(int index); // Delete element at given index
+
+    bool isEmpty();
 
     void debug(); // Print array details for debugging purposes
 };
