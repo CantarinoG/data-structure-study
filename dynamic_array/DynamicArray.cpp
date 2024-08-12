@@ -17,6 +17,10 @@ DynamicArray::DynamicArray(int capacity)
     size = 0;
 }
 
+DynamicArray::~DynamicArray()
+{
+}
+
 int DynamicArray::getSize()
 {
     return size;
