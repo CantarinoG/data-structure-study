@@ -2,10 +2,11 @@
 #ifndef DYNAMICARRAY_H
 #define DYNAMICARRAY_H
 
+template <class T>
 class DynamicArray
 {
 private:
-    int *array;   // The array
+    T *array;     // The array
     int size;     // The number of elements I have
     int capacity; // The number of element in the array
 
@@ -19,7 +20,7 @@ public:
 
     int getCapacity();
 
-    void pushBack(int value); // Insert elements after last stored index
+    void pushBack(T value); // Insert elements after last stored index
 
     void popBack(); // Delete element at last stored index
 
@@ -27,9 +28,9 @@ public:
 
     void shrinkArray(); // Substitute the current array for one of half the size
 
-    int search(int key); // Search for element in the array. Returns -1 if not found
+    int search(T key); // Search for element in the array. Returns -1 if not found
 
-    void insertAt(int index, int value); // Insert element at given index
+    void insertAt(int index, T value); // Insert element at given index
 
     void deleteAt(int index); // Delete element at given index
 

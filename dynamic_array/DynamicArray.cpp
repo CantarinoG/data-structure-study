@@ -3,35 +3,41 @@
 
 using namespace std;
 
-DynamicArray::DynamicArray()
+template <class T>
+DynamicArray<T>::DynamicArray()
 {
     capacity = 1;
     size = 0;
-    array = new int[capacity];
+    array = new T[capacity];
 }
 
-DynamicArray::DynamicArray(int capacity)
+template <class T>
+DynamicArray<T>::DynamicArray(int capacity)
 {
     this->capacity = capacity; // C++ note: "this" always uses the arrow, not the dot.
-    array = new int[capacity];
+    array = new T[capacity];
     size = 0;
 }
-
-DynamicArray::~DynamicArray()
+template <class T>
+DynamicArray<T>::~DynamicArray()
 {
+    delete[] array;
 }
 
-int DynamicArray::getSize()
+template <class T>
+int DynamicArray<T>::getSize()
 {
     return size;
 }
 
-int DynamicArray::getCapacity()
+template <class T>
+int DynamicArray<T>::getCapacity()
 {
     return capacity;
 }
 
-void DynamicArray::pushBack(int value)
+template <class T>
+void DynamicArray<T>::pushBack(T value)
 {
     if (size == capacity)
     { // Array is full, need to extend it.
@@ -41,9 +47,9 @@ void DynamicArray::pushBack(int value)
     size++;
 }
 
-void DynamicArray::popBack()
+template <class T>
+void DynamicArray<T>::popBack()
 {
-    array[size - 1] = 0;
     size--;
     if (size == (capacity / 2))
     { // If the current number of element do not go past half of the array
@@ -51,9 +57,10 @@ void DynamicArray::popBack()
     }
 }
 
-void DynamicArray::growArray()
+template <class T>
+void DynamicArray<T>::growArray()
 {
-    int *newArray = new int[capacity * 2];
+    T *newArray = new T[capacity * 2];
     capacity *= 2;
 
     for (int i = 0; i < size; i++) // Copy each element from the current array into the new array.
@@ -65,10 +72,11 @@ void DynamicArray::growArray()
     array = newArray; // newArray is now the current array.
 }
 
-void DynamicArray::shrinkArray()
+template <class T>
+void DynamicArray<T>::shrinkArray()
 {
     capacity = size;
-    int *newArray = new int[capacity];
+    T *newArray = new T[capacity];
 
     for (int i = 0; i < size; i++)
     {
@@ -79,7 +87,8 @@ void DynamicArray::shrinkArray()
     array = newArray;
 }
 
-int DynamicArray::search(int key)
+template <class T>
+int DynamicArray<T>::search(T key)
 {
     for (int i = 0; i < size; i++)
     { // Go through each element of the array. If that element is equal to key, return it's index.
@@ -92,7 +101,8 @@ int DynamicArray::search(int key)
     return -1;
 }
 
-void DynamicArray::insertAt(int index, int value)
+template <class T>
+void DynamicArray<T>::insertAt(int index, T value)
 {
     if (size == capacity)
     {
@@ -111,7 +121,8 @@ void DynamicArray::insertAt(int index, int value)
     size++;
 }
 
-void DynamicArray::deleteAt(int index)
+template <class T>
+void DynamicArray<T>::deleteAt(int index)
 {
     for (int i = index; i < size; i++)
     // Goes through the array, starting from the index.
@@ -120,7 +131,6 @@ void DynamicArray::deleteAt(int index)
     {
         array[i] = array[i + 1];
     }
-    array[size - 1] = 0; // Removes the last stored element(that is now stored one position behind).
 
     size--;
 
@@ -130,12 +140,14 @@ void DynamicArray::deleteAt(int index)
     }
 }
 
-bool DynamicArray::isEmpty()
+template <class T>
+bool DynamicArray<T>::isEmpty()
 {
     return size == 0;
 }
 
-void DynamicArray::debug()
+template <class T>
+void DynamicArray<T>::debug()
 {
     cout << "Elements of array: ";
     for (int i = 0; i < size; i++)
@@ -145,4 +157,22 @@ void DynamicArray::debug()
     cout << endl;
     cout << "Size: " << size << endl;
     cout << "Capacity: " << capacity << endl;
+    cout << "--------------------------" << endl;
 }
+
+// Apparently I must put these for each fucking type this class would be able to handle, otherwise it do not fucking works.
+template class DynamicArray<int>;
+template class DynamicArray<char>;
+template class DynamicArray<short>;
+template class DynamicArray<long>;
+template class DynamicArray<long long>;
+template class DynamicArray<unsigned int>;
+template class DynamicArray<unsigned char>;
+template class DynamicArray<unsigned short>;
+template class DynamicArray<unsigned long>;
+template class DynamicArray<unsigned long long>;
+template class DynamicArray<float>;
+template class DynamicArray<double>;
+template class DynamicArray<long double>;
+template class DynamicArray<bool>;
+template class DynamicArray<string>;

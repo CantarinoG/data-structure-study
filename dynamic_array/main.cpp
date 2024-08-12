@@ -5,22 +5,22 @@ using namespace std;
 
 int main()
 {
-    DynamicArray arr = DynamicArray();
+    DynamicArray<string> arr;
     arr.debug();
-    arr.pushBack(25);
-    cout << "Added 25" << endl;
+    arr.pushBack("Guilherme");
+    cout << "Added Guilherme" << endl;
     arr.debug();
-    arr.pushBack(50);
-    cout << "Added 50" << endl;
+    arr.pushBack("Thais");
+    cout << "Added Thais" << endl;
     arr.debug();
-    arr.pushBack(75);
-    cout << "Added 75" << endl;
+    arr.pushBack("Vitor");
+    cout << "Added Vitor" << endl;
     arr.debug();
-    arr.pushBack(100);
-    cout << "Added 100" << endl;
+    arr.pushBack("Hygor");
+    cout << "Added Hygor" << endl;
     arr.debug();
-    arr.insertAt(3, 1000);
-    cout << "Insert 1000 at 3" << endl;
+    arr.insertAt(3, "Arthur");
+    cout << "Insert Arthur at 3" << endl;
     arr.debug();
     arr.deleteAt(3);
     cout << "Delete at 3" << endl;
