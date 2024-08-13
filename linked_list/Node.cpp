@@ -1,10 +1,10 @@
 #include "Node.h"
+#include <iostream>
 using namespace std;
 
 template <class T>
 Node<T>::Node()
 {
-    data = NULL;
     next = NULL;
 }
 
@@ -21,18 +21,18 @@ Node<T>::~Node()
     next = NULL;
 }
 
-template class DynamicArray<int>;
-template class DynamicArray<char>;
-template class DynamicArray<short>;
-template class DynamicArray<long>;
-template class DynamicArray<long long>;
-template class DynamicArray<unsigned int>;
-template class DynamicArray<unsigned char>;
-template class DynamicArray<unsigned short>;
-template class DynamicArray<unsigned long>;
-template class DynamicArray<unsigned long long>;
-template class DynamicArray<float>;
-template class DynamicArray<double>;
-template class DynamicArray<long double>;
-template class DynamicArray<bool>;
-template class DynamicArray<string>;
+template class Node<int>;
+template class Node<char>;
+template class Node<short>;
+template class Node<long>;
+template class Node<long long>;
+template class Node<unsigned int>;
+template class Node<unsigned char>;
+template class Node<unsigned short>;
+template class Node<unsigned long>;
+template class Node<unsigned long long>;
+template class Node<float>;
+template class Node<double>;
+template class Node<long double>;
+template class Node<bool>;
+template class Node<string>;
