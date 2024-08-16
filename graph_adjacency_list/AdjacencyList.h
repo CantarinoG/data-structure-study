@@ -1,21 +1,22 @@
 #ifndef ADJACENCYLIST_H
 #define ADJACENCYLIST_H
-
-#include "../linked_list/LinkedList.h"
+#include <vector>
 
 class AdjacencyList
 {
 private:
     int vertices; // Number of vertices
-    LinkedList<int> *adjList;
+    std::vector<int> *adjList;
 
 public:
     AdjacencyList(int vertices);
     ~AdjacencyList();
     void debug();
-    int getEdges(int src);
+    void handleUnallowedValue(int value);
+    std::vector<int> getEdges(int src);
     int isThereEdge(int src, int dest);
     void addEdge(int src, int dest);
+    int getVectorIndex(int src, int dest);
     void removeEdge(int src, int dest);
 };
 
